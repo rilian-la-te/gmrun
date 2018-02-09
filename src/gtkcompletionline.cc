@@ -105,74 +105,74 @@ GType gtk_completion_line_get_type(void)
 static void
 gtk_completion_line_class_init(GtkCompletionLineClass *klass)
 {
-  GtkObjectClass *object_class;
+  GObjectClass *object_class;
 
-  object_class = (GtkObjectClass*)klass;
+  object_class = (GObjectClass*)klass;
 
   gtk_completion_line_signals[UNIQUE] =
-    gtk_signal_new("unique",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     unique),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("unique", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     unique),NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[NOTUNIQUE] =
-    gtk_signal_new("notunique",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     notunique),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("notunique", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     notunique),NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[INCOMPLETE] =
-    gtk_signal_new("incomplete",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     incomplete),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("incomplete", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     incomplete), NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[RUNWITHTERM] =
-    gtk_signal_new("runwithterm",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     runwithterm),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("runwithterm", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     runwithterm),NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[SEARCH_MODE] =
-    gtk_signal_new("search_mode",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     search_mode),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("search_mode", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     search_mode),NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[SEARCH_NOT_FOUND] =
-    gtk_signal_new("search_not_found",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     search_not_found),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("search_not_found", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     search_not_found),NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[SEARCH_LETTER] =
-    gtk_signal_new("search_letter",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     search_letter),
-                   gtk_signal_default_marshaller, GTK_TYPE_NONE, 0);
+    g_signal_new("search_letter", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     search_letter),NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
   gtk_completion_line_signals[EXT_HANDLER] =
-    gtk_signal_new("ext_handler",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     ext_handler),
-                   gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1,
-                   GTK_TYPE_POINTER);
+    g_signal_new("ext_handler", G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     ext_handler),NULL, NULL,
+                   g_cclosure_marshal_VOID__POINTER, G_TYPE_NONE, 1,
+                   G_TYPE_POINTER);
 
   gtk_completion_line_signals[CANCEL] =
-    gtk_signal_new("cancel",
-                   GTK_RUN_FIRST, G_TYPE_FROM_CLASS(object_class),
-                   GTK_SIGNAL_OFFSET(GtkCompletionLineClass,
-                                     ext_handler),
-                   gtk_marshal_NONE__POINTER, GTK_TYPE_NONE, 1,
-                   GTK_TYPE_POINTER);
+    g_signal_new("cancel",  G_TYPE_FROM_CLASS(object_class),
+                   G_SIGNAL_RUN_FIRST,
+                   G_STRUCT_OFFSET(GtkCompletionLineClass,
+                                     ext_handler),NULL, NULL,
+                   g_cclosure_marshal_VOID__POINTER, G_TYPE_NONE, 1,
+                   G_TYPE_POINTER);
 
   //gtk_object_class_add_signals(object_class,
   //                             gtk_completion_line_signals, LAST_SIGNAL);
@@ -204,10 +204,10 @@ gtk_completion_line_init(GtkCompletionLine *object)
   object->show_dot_files = 0;
 
   on_key_press_handler =
-    gtk_signal_connect(GTK_OBJECT(object), "key_press_event",
-                       GTK_SIGNAL_FUNC(on_key_press), NULL);
-  gtk_signal_connect(GTK_OBJECT(object), "key_release_event",
-                     GTK_SIGNAL_FUNC(on_key_press), NULL);
+    g_signal_connect(G_OBJECT(object), "key_press_event",
+                       G_CALLBACK(on_key_press), NULL);
+  g_signal_connect(G_OBJECT(object), "key_release_event",
+                     G_CALLBACK(on_key_press), NULL);
 
   object->hist = new HistoryFile();
 
@@ -320,10 +320,10 @@ set_words(GtkCompletionLine *object, const vector<string>& words, int pos = -1)
     const string& s = words.back();
     size_t pos = s.rfind('.');
     if (pos != string::npos)
-      gtk_signal_emit_by_name(
-        GTK_OBJECT(object), "ext_handler", s.substr(pos + 1).c_str());
+      g_signal_emit_by_name(
+        G_OBJECT(object), "ext_handler", s.substr(pos + 1).c_str());
     else
-      gtk_signal_emit_by_name(GTK_OBJECT(object), "ext_handler", NULL);
+      g_signal_emit_by_name(G_OBJECT(object), "ext_handler", NULL);
   }
 
   gtk_entry_set_text(GTK_ENTRY(object), 
@@ -598,10 +598,10 @@ on_row_selected(GtkWidget *ls, gint row, gint col, GdkEvent *ev, gpointer data)
   GtkCompletionLine *cl = GTK_COMPLETION_LINE(data);
 
   cl->list_compl_items_where = row;
-  gtk_signal_handler_block(GTK_OBJECT(cl->list_compl),
+  g_signal_handler_block(G_OBJECT(cl->list_compl),
                            on_row_selected_handler);
   complete_from_list(cl);
-  gtk_signal_handler_unblock(GTK_OBJECT(cl->list_compl),
+  g_signal_handler_unblock(G_OBJECT(cl->list_compl),
                              on_row_selected_handler);
 }
 
@@ -658,13 +658,13 @@ complete_line(GtkCompletionLine *object)
   GList *ls = object->cmpl;
 
   if (g_list_length(ls) == 1) {
-    gtk_signal_emit_by_name(GTK_OBJECT(object), "unique");
+    g_signal_emit_by_name(G_OBJECT(object), "unique");
     return GEN_COMPLETION_OK;
   } else if (g_list_length(ls) == 0 || ls == NULL) {
-    gtk_signal_emit_by_name(GTK_OBJECT(object), "incomplete");
+    g_signal_emit_by_name(G_OBJECT(object), "incomplete");
     return GEN_CANT_COMPLETE;
   } else if (g_list_length(ls) >  1) {
-    gtk_signal_emit_by_name(GTK_OBJECT(object), "notunique");
+    g_signal_emit_by_name(G_OBJECT(object), "notunique");
 
     vector<string> words;
     int pos = get_words(object, words);
@@ -684,10 +684,10 @@ complete_line(GtkCompletionLine *object)
         object->list_compl = gtk_clist_new(1);
 
         on_row_selected_handler =
-          gtk_signal_connect(GTK_OBJECT(object->list_compl), "select_row",
-                             GTK_SIGNAL_FUNC(on_row_selected), object);
+          g_signal_connect(G_OBJECT(object->list_compl), "select_row",
+                             G_CALLBACK(on_row_selected), object);
 
-        gtk_signal_handler_block(GTK_OBJECT(object->list_compl),
+        g_signal_handler_block(G_OBJECT(object->list_compl),
                                  on_row_selected_handler);
 
         GList *p = ls;
@@ -734,7 +734,7 @@ complete_line(GtkCompletionLine *object)
         gtk_clist_select_row(GTK_CLIST(object->list_compl),
                              object->list_compl_items_where, 0);
 
-        gtk_signal_handler_unblock(GTK_OBJECT(object->list_compl),
+        g_signal_handler_unblock(G_OBJECT(object->list_compl),
                                    on_row_selected_handler);
       }
 
@@ -776,7 +776,7 @@ search_back_history(GtkCompletionLine* cl, bool avance, bool begin)
     if (avance) {
       histext = cl->hist->prev_to_first();
       if (histext == NULL) {
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_not_found");
+        g_signal_emit_by_name(G_OBJECT(cl), "search_not_found");
         return 0;
       }
     } else {
@@ -793,19 +793,19 @@ search_back_history(GtkCompletionLine* cl, bool avance, bool begin)
 			     g_locale_to_utf8 (histext, -1, NULL, NULL, NULL));
           gtk_entry_select_region(GTK_ENTRY(cl),
                                   i, i + cl->hist_word->length());
-          gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_letter");
+          g_signal_emit_by_name(G_OBJECT(cl), "search_letter");
           return 1;
         }
       }
       histext = cl->hist->prev_to_first();
       if (histext == NULL) {
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_not_found");
+        g_signal_emit_by_name(G_OBJECT(cl), "search_not_found");
         break;
       }
     }
   } else {
     gtk_entry_select_region(GTK_ENTRY(cl), 0, 0);
-    gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_letter");
+    g_signal_emit_by_name(G_OBJECT(cl), "search_letter");
   }
 
   return 0;
@@ -819,7 +819,7 @@ search_forward_history(GtkCompletionLine* cl, bool avance, bool begin)
     if (avance) {
       histext = cl->hist->next_to_last();
       if (histext == NULL) {
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_not_found");
+        g_signal_emit_by_name(G_OBJECT(cl), "search_not_found");
         return 0;
       }
     } else {
@@ -836,19 +836,19 @@ search_forward_history(GtkCompletionLine* cl, bool avance, bool begin)
 			     g_locale_to_utf8 (histext, -1, NULL, NULL, NULL));
           gtk_entry_select_region(GTK_ENTRY(cl),
                                   i, i + cl->hist_word->length());
-          gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_letter");
+          g_signal_emit_by_name(G_OBJECT(cl), "search_letter");
           return 1;
         }
       }
       histext = cl->hist->next_to_last();
       if (histext == NULL) {
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_not_found");
+        g_signal_emit_by_name(G_OBJECT(cl), "search_not_found");
         break;
       }
     }
   } else {
     gtk_entry_select_region(GTK_ENTRY(cl), 0, 0);
-    gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_letter");
+    g_signal_emit_by_name(G_OBJECT(cl), "search_letter");
   }
 
   return 0;
@@ -876,12 +876,12 @@ search_off(GtkCompletionLine* cl)
   int pos = gtk_editable_get_position(GTK_EDITABLE(cl));
   gtk_entry_select_region(GTK_ENTRY(cl), pos, pos);
   cl->hist_search_mode = GCL_SEARCH_OFF;
-  gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_mode");
+  g_signal_emit_by_name(G_OBJECT(cl), "search_mode");
   cl->hist->reset_position();
 }
 
 #define STOP_PRESS \
-  (gtk_signal_emit_stop_by_name(GTK_OBJECT(cl),   "key_press_event"))
+  (g_signal_stop_emission_by_name(G_OBJECT(cl),   "key_press_event"))
 #define MODE_BEG \
   (cl->hist_search_mode == GCL_SEARCH_BEG)
 #define MODE_REW \
@@ -994,9 +994,9 @@ on_key_press(GtkCompletionLine *cl, GdkEventKey *event, gpointer data)
         cl->win_compl = NULL;
       }
       if (event->state & GDK_CONTROL_MASK) {
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "runwithterm");
+        g_signal_emit_by_name(G_OBJECT(cl), "runwithterm");
       } else {
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "activate");
+        g_signal_emit_by_name(G_OBJECT(cl), "activate");
       }
       STOP_PRESS;
       return TRUE;
@@ -1010,7 +1010,7 @@ on_key_press(GtkCompletionLine *cl, GdkEventKey *event, gpointer data)
           goto ordinary;
         cl->hist_search_mode = GCL_SEARCH_BEG;
         cl->hist_word->clear();
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_mode");
+        g_signal_emit_by_name(G_OBJECT(cl), "search_mode");
         STOP_PRESS;
         return true;
       } else goto ordinary;
@@ -1024,7 +1024,7 @@ on_key_press(GtkCompletionLine *cl, GdkEventKey *event, gpointer data)
           cl->hist_search_mode = GCL_SEARCH_REW;
           cl->hist_word->clear();
           cl->hist->reset_position();
-          gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_mode");
+          g_signal_emit_by_name(G_OBJECT(cl), "search_mode");
         }
         STOP_PRESS;
         return TRUE;
@@ -1039,7 +1039,7 @@ on_key_press(GtkCompletionLine *cl, GdkEventKey *event, gpointer data)
           cl->hist_search_mode = GCL_SEARCH_FWD;
           cl->hist_word->clear();
           cl->hist->reset_position();
-          gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_mode");
+          g_signal_emit_by_name(G_OBJECT(cl), "search_mode");
         }
         STOP_PRESS;
         return TRUE;
@@ -1049,7 +1049,7 @@ on_key_press(GtkCompletionLine *cl, GdkEventKey *event, gpointer data)
       if (MODE_SRC) {
         if (!cl->hist_word->empty()) {
           cl->hist_word->erase(cl->hist_word->length() - 1);
-          gtk_signal_emit_by_name(GTK_OBJECT(cl), "search_letter");
+          g_signal_emit_by_name(G_OBJECT(cl), "search_letter");
         }
         STOP_PRESS;
         return TRUE;
@@ -1069,7 +1069,7 @@ on_key_press(GtkCompletionLine *cl, GdkEventKey *event, gpointer data)
         cl->win_compl = NULL;
       } else {
         // user cancelled
-        gtk_signal_emit_by_name(GTK_OBJECT(cl), "cancel");
+        g_signal_emit_by_name(G_OBJECT(cl), "cancel");
       }
       STOP_PRESS;
       return TRUE;
